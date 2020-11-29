@@ -45,7 +45,7 @@ class CollectionContainer extends React.Component {
     // map over user plants and create cards
     // TODO change to iteration to real data
     const testPlantNicknames = ["Planty", "Sprout", "Planty Jr.", "Ms. Prickly"]
-    return testPlantNicknames.map(nickname => <UserPlantCard nickname={nickname}/>)
+    return testPlantNicknames.map((nickname, index) => <UserPlantCard key={index} nickname={nickname}/>)
   }
 
 }
