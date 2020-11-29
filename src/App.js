@@ -4,6 +4,8 @@ import './App.css';
 import Signup from "./Components/Signup"
 import Login from "./Components/Login"
 import Navbar from "./Components/Navbar"
+import SearchContainer from "./Containers/SearchContainer"
+
 
 class App extends React.Component {
 
@@ -20,7 +22,7 @@ class App extends React.Component {
       })
       .then(response => response.json())
       .then(data => {
-        this.setState({user: data.user}, () => console.log("LOGGED IN AS: ", this.state.user))
+        this.setState({user: data.user}, () => console.log("CURRENT USER: ", this.state.user))
       })
     } else {
       this.props.history.push("/login")
@@ -76,6 +78,7 @@ class App extends React.Component {
             <Switch>
               <Route path ="/signup" render={ () => <Signup submitHandler={this.signupHandler} /> } />
               <Route path ="/login" render={ () => <Login submitHandler={this.loginHandler} /> } />
+              <Route path ="/search" render={ () => <SearchContainer user={this.state.user} /> } />
             </Switch>
         </div>
     );
