@@ -5,7 +5,7 @@ import Signup from "./Components/Signup"
 import Login from "./Components/Login"
 import Navbar from "./Components/Navbar"
 import SearchContainer from "./Containers/SearchContainer"
-
+import CollectionContainer from './Containers/CollectionContainer';
 
 class App extends React.Component {
 
@@ -75,11 +75,13 @@ class App extends React.Component {
         <div className="App">
           <h1>Plant App</h1>
           <Navbar user={this.state.user} logoutHandler={this.logoutHandler}/>
-            <Switch>
-              <Route path ="/signup" render={ () => <Signup submitHandler={this.signupHandler} /> } />
-              <Route path ="/login" render={ () => <Login submitHandler={this.loginHandler} /> } />
-              <Route path ="/search" render={ () => <SearchContainer user={this.state.user} /> } />
-            </Switch>
+          <Switch>
+            <Route path ="/signup" render={ () => <Signup submitHandler={this.signupHandler} /> } />
+            <Route path ="/login" render={ () => <Login submitHandler={this.loginHandler} /> } />
+            <Route path ="/search" render={ () => <SearchContainer user={this.state.user} /> } />
+            <Route path="/collection" render={ () => <CollectionContainer user={this.state.user}/>} />
+          </Switch>
+          {/* footer component here */}
         </div>
     );
   }
