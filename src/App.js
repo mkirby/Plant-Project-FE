@@ -3,6 +3,7 @@ import { Route, Switch, withRouter} from 'react-router-dom'
 import './App.css';
 import Signup from "./Components/Signup"
 import Login from "./Components/Login"
+import CollectionContainer from './Containers/CollectionContainer';
 class App extends React.Component {
 
   state = {
@@ -12,7 +13,7 @@ class App extends React.Component {
   componentDidMount() {
     const token = localStorage.getItem("token")
     if (token) {
-      fetch('http://localhost:3000/api/v1/users', {
+      fetch('http://localhost:3000/api/v1/profile', {
         method: "GET",
         headers: { Authorization: `Bearer ${token}` },
       })
@@ -53,15 +54,16 @@ class App extends React.Component {
   }
   
   render() {
-    console.log(this.props.history)
     return (
         <div className="App">
           <h1>Plant App</h1>
           {/* header components here*/}
-            <Switch>
-              <Route path ="/signup" render={ () => <Signup submitHandler={this.signupHandler} /> } />
-              <Route path ="/login" render={ () => <Login submitHandler={this.loginHandler} /> } />
-            </Switch>
+          <Switch>
+            <Route path="/collection" render={ () => <CollectionContainer user={this.state.user}/>} />
+            <Route path ="/signup" render={ () => <Signup submitHandler={this.signupHandler} /> } />
+            <Route path ="/login" render={ () => <Login submitHandler={this.loginHandler} /> } />
+          </Switch>
+          {/* footer component here */}
         </div>
     );
   }
