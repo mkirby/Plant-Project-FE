@@ -1,9 +1,14 @@
 import React from 'react'
+import SearchForm from '../Components/SearchForm'
 
 class SearchContainer extends React.Component {
     
     state = {
         searchSelection: []
+    }
+    
+    searchHandler = (query) => {
+        console.log(query)
     }
         
     render() {
@@ -11,7 +16,7 @@ class SearchContainer extends React.Component {
         return(
                 <>
                 <h1>Search</h1>
-                    {this.props.user ? <p>Logged in</p> : <p>not logged in</p>}
+                    {this.props.user ? <SearchForm searchHandler={this.searchHandler}/> : <p>Please log in</p>}
                 </>
         )
     }
