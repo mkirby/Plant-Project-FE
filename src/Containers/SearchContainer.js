@@ -1,6 +1,9 @@
 import React from 'react'
+import { Route, Switch} from 'react-router-dom'
+
 import SearchForm from '../Components/SearchForm'
 import PlantCard from '../Components/PlantCard'
+import PlantProfile from '../Containers/PlantProfile'
 
 class SearchContainer extends React.Component {
     
@@ -16,7 +19,11 @@ class SearchContainer extends React.Component {
             }
         })
         .then(resp => resp.json())
-        .then(apiResponse => this.setState({queryResults: apiResponse.api_data.data}, () => console.log(apiResponse)))
+        .then(apiResponse => this.setState({queryResults: apiResponse.api_data.data}))
+    }
+    
+    renderPlantResults = () => {
+        return this.state.queryResults.map(plant => <PlantCard key={plant.id} plant={plant}/>)
     }
         
     render() {
@@ -24,13 +31,31 @@ class SearchContainer extends React.Component {
                 <>
                     <h1>Search</h1>
                     {this.props.user ? <SearchForm searchHandler={this.searchHandler}/> : <p>Please log in</p>}
-                    {this.renderPlantResults()}
+                    <Switch>
+                        <Route path="/search/:apiSlug" render={
+                            ({match}) => {
+                                this.fetchPlantInfo(match.params.apiSlug)
+                            }
+                        } />
+                        <Route path="/search" render={ () => this.renderPlantResults() } />
+                    </Switch>
                 </>
         )
     }
-
-    renderPlantResults = () => {
-        return this.state.queryResults.map(plant => <PlantCard key={plant.id} plant={plant}/>)
+    
+    fetchPlantInfo = (slug) => {
+        const token = localStorage.getItem("token")
+        return fetch(`http://localhost:3000/api/v1/search/${slug}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        .then(response => response.json())
+        .then(payload => payload.api_data.data)
+        .then(plant => {
+            console.log("PLANT:", plant)
+            return <PlantProfile plant={plant} />
+        })
     }
 }
 

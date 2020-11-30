@@ -22,7 +22,7 @@ class App extends React.Component {
       })
       .then(response => response.json())
       .then(data => {
-        this.setState({user: data.user}, () => console.log("CURRENT USER: ", this.state.user))
+        this.setState({user: data.user})
       })
     } else {
       this.props.history.push("/login")
@@ -76,9 +76,9 @@ class App extends React.Component {
           <h1>Plant App</h1>
           <Navbar user={this.state.user} logoutHandler={this.logoutHandler}/>
           <Switch>
-            <Route path ="/signup" render={ () => <Signup submitHandler={this.signupHandler} /> } />
-            <Route path ="/login" render={ () => <Login submitHandler={this.loginHandler} /> } />
-            <Route path ="/search" render={ () => <SearchContainer user={this.state.user} /> } />
+            <Route path="/signup" render={ () => <Signup submitHandler={this.signupHandler} /> } />
+            <Route path="/login" render={ () => <Login submitHandler={this.loginHandler} /> } />
+            <Route path="/search" render={ () => <SearchContainer user={this.state.user} /> } />
             <Route path="/collection" render={ () => <CollectionContainer user={this.state.user}/>} />
           </Switch>
           {/* footer component here */}
