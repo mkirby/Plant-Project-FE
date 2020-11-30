@@ -73,15 +73,19 @@ class App extends React.Component {
   render() {
     return (
         <div className="App">
-          <h1>Plant App</h1>
           <Navbar user={this.state.user} logoutHandler={this.logoutHandler}/>
-          <Switch>
-            <Route path ="/signup" render={ () => <Signup submitHandler={this.signupHandler} /> } />
-            <Route path ="/login" render={ () => <Login submitHandler={this.loginHandler} /> } />
-            <Route path ="/search" render={ () => <SearchContainer user={this.state.user} /> } />
-            <Route path="/collection" render={ () => <CollectionContainer user={this.state.user}/>} />
-          </Switch>
+          <main>
+            <Switch>
+              <Route path ="/signup" render={ () => <Signup submitHandler={this.signupHandler} /> } />
+              <Route path ="/login" render={ () => <Login submitHandler={this.loginHandler} /> } />
+              <Route path ="/search" render={ () => <SearchContainer user={this.state.user} /> } />
+              <Route path="/collection" render={ () => <CollectionContainer user={this.state.user}/>} />
+            </Switch>
+          </main>
           {/* footer component here */}
+          <footer>
+            <p>Footer</p>
+          </footer>
         </div>
     );
   }
