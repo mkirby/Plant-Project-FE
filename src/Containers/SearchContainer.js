@@ -4,26 +4,24 @@ import SearchForm from '../Components/SearchForm'
 import PlantCard from '../Components/PlantCard'
 import PlantProfile from '../Containers/PlantProfile'
 
+import Modal from '../Components/Modal'
+
+
 class SearchContainer extends React.Component {
 
     state = {
-        queryResults: []
+        queryResults: [],
+        visibleModal: false,
+        modalPlant: {}
     }
-
-    render() {
-        return(
-                <>
-                    <h1>Search</h1>
-                    {this.props.user ? <SearchForm searchHandler={this.searchHandler}/> : <p>Please log in</p>}
-                    <Switch>
-                        <Route path="/search/:apiSlug" render={({match}) => {
-                                return <PlantProfile slug={match.params.apiSlug} />
-                            }
-                        }/>
-                        <Route path="/search" render={ () => this.renderPlantResults() } />
-                    </Switch>
-                </>
-        )
+    
+    renderModal = (plantObj) => {
+        this.setState({visibleModal: true, modalPlant: plantObj}, () => console.log(this.state))
+    }
+    
+    hideModal = () => {
+        console.log("click")
+        this.setState({visibleModal: false, modalPlant: {}})
     }
 
     searchHandler = (query) => {
@@ -40,7 +38,29 @@ class SearchContainer extends React.Component {
     }
     
     renderPlantResults = () => {
-        return this.state.queryResults.map(plant => <PlantCard key={plant.id} plant={plant}/>)
+        return this.state.queryResults.map(plant => 
+            <PlantCard key={plant.id} plant={plant} renderModal={this.renderModal} />
+        )
+    }
+
+    
+    render() {
+        return(
+                <div id="search-container">
+                    <h1>Search</h1>
+                    {this.props.user ? <SearchForm searchHandler={this.searchHandler}/> : <p>Please log in</p>}
+                    
+                    {this.state.visibleModal ? <Modal plant={this.state.modalPlant} hideModal={this.hideModal} /> : null }
+                    
+                    <Switch>
+                        <Route path="/search/:apiSlug" render={({match}) => {
+                                return <PlantProfile slug={match.params.apiSlug} />
+                            }
+                        }/>
+                        <Route path="/search" render={ () => this.renderPlantResults() } />
+                    </Switch>
+                </div>
+        )
     }
 }
 

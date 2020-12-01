@@ -41,8 +41,13 @@
   /* border: 2px solid orange; */
 }
 
+.plant-card {
+  padding: 10px;
+}
+
 main {
   grid-area: main-content;
+  margin: 20px;
   /* border: 2px solid orange; */
 }
 
@@ -50,4 +55,23 @@ footer {
   grid-area: footer;
   background-color: green;
   /* border: 2px solid red; */
+}
+
+#plant-modal {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+#modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%; /* Could be more or less, depending on screen size */
 }
