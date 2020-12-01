@@ -12,25 +12,25 @@ class SearchContainer extends React.Component {
 
     render() {
         return(
-                <div className="search-container">
-                    <div className="search-filters">
-                        <h1>Search</h1>
-                        {this.props.user ? <SearchForm searchHandler={this.searchHandler}/> : <p>Please log in</p>}
-                    </div>
-                    <Switch>
-                        <Route path="/search/:apiSlug" render={({match}) => {
-                                return <div className="plant-profile-div">
-                                    <PlantProfile slug={match.params.apiSlug} />
-                                </div>
-                            }
-                        }/>
-                        <Route path="/search" render={ () => {
-                            return <div className="search-results-div">
-                                {this.renderPlantResults()}
-                            </div>
-                        }} />
-                    </Switch>
+            <div className="search-container">
+                <div className="search-filters">
+                    <h1>Search</h1>
+                    {this.props.user ? <SearchForm searchHandler={this.searchHandler}/> : <p>Please log in</p>}
                 </div>
+                <Switch>
+                    <Route path="/search/:apiSlug" render={({match}) => {
+                            return <div className="plant-profile-div">
+                                <PlantProfile slug={match.params.apiSlug} />
+                            </div>
+                        }
+                    }/>
+                    <Route path="/search" render={ () => {
+                        return <div className="search-results-div">
+                            {this.renderPlantResults()}
+                        </div>
+                    }} />
+                </Switch>
+            </div>
         )
     }
 

@@ -52,10 +52,22 @@ footer {
   /* border: 2px solid red; */
 }
 
+.search-container {
+  /* the entire search container return div */
+}
+
+.search-filters {
+  /* search and filter controls container */
+}
+
 .search-results-div {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
+}
+
+.plant-profile-div {
+  /* holds the plant profile component on the search page */
 }
 
 .plant-card {
@@ -66,3 +78,4 @@ footer {
   padding: 20px;
   min-width: 250px;
 }
+
