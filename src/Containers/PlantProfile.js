@@ -1,6 +1,7 @@
 import React from 'react'
 
 class PlantProfile extends React.Component {
+    
     state = {
         plant: null
     }
@@ -18,7 +19,6 @@ class PlantProfile extends React.Component {
 
     render() {
         const plant = this.state.plant
-        console.log(plant)
         return (
             <>
                 {this.state.plant ? 
@@ -30,24 +30,8 @@ class PlantProfile extends React.Component {
                         {plant.family ? <p>Family: {plant.family.name}</p> : null }
                         {plant.year ? <p>Year discovered: {plant.year}</p> : null }
                         
-                        { plant.main_species ?
-                            <>
-                                <h4>Common names</h4>
-                                <ul>
-                                    {this.renderPlantNames()}
-                                </ul>
-                            </>
-                        :
-                            null }
-                        { plant.main_species ?    
-                            <>
-                                <h4>Native to</h4>
-                                <ul>
-                                    {this.renderplantNativeTo()}
-                                </ul>
-                            </>
-                        :
-                            null }
+                        {this.renderPlantNames()}
+                        {this.renderplantNativeTo()}
                     </div>
                 :
                 <p>Loading...</p> }
@@ -56,12 +40,36 @@ class PlantProfile extends React.Component {
     }
 
     renderPlantNames = () => {
-        return this.state.plant.main_species.common_names.en.map((name, index) => <li key={index}>{name}</li>)
+        if (this.state.plant.main_species) {
+            if (this.state.plant.main_species.common_names) {
+                const nameLis = this.state.plant.main_species.common_names.en.map((name, index) => <li key={index}>{name}</li>)
+                return(
+                    <div>
+                        <h4>Common names</h4>
+                        <ul>
+                            {nameLis}
+                        </ul>
+                    </div>
+                )
+            }
+        }
     }
-
+    
     renderplantNativeTo = () => {
-        return this.state.plant.main_species.distribution.native.map((locale, index) => <li key={index}>{locale}</li>)
-    } 
+        if (this.state.plant.main_species) {
+            if (this.state.plant.main_species.distribution.native) {
+                const localeLis = this.state.plant.main_species.distribution.native.map((locale, index) => <li key={index}>{locale}</li>)
+                return(
+                    <div>
+                        <h4>Native to</h4>
+                        <ul>
+                            {localeLis}
+                        </ul>
+                    </div>
+                )
+            }
+        }
+    }
 }
     
 export default PlantProfile

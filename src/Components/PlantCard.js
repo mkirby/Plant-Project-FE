@@ -10,7 +10,7 @@ class PlantCard extends React.Component {
         <h3>{plant.common_name}</h3>
         <p>Scientific Name: <em>{plant.scientific_name}</em></p>
         <p>Genus: {plant.genus}</p>
-        <button onClick={() => this.props.renderModal(plant)}>more info</button>
+        <button onClick={() => this.props.renderModal(plant.slug)}>more info</button>
       </div>
     )
   }

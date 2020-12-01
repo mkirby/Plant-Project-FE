@@ -12,16 +12,15 @@ class SearchContainer extends React.Component {
     state = {
         queryResults: [],
         visibleModal: false,
-        modalPlant: {}
+        modalPlant: ""
     }
     
-    renderModal = (plantObj) => {
-        this.setState({visibleModal: true, modalPlant: plantObj}, () => console.log(this.state))
+    renderModal = (plantSlug) => {
+        this.setState({visibleModal: true, modalPlant: plantSlug})
     }
     
     hideModal = () => {
-        console.log("click")
-        this.setState({visibleModal: false, modalPlant: {}})
+        this.setState({visibleModal: false, modalPlant: ""})
     }
 
     searchHandler = (query) => {
