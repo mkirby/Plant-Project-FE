@@ -61,7 +61,6 @@ class SearchContainer extends React.Component {
             this.postPlant(plant)
             .then(plantObj => {
                 this.postUserPlant(plantObj.plant.id, this.props.user.id)
-                .then(() => {})
             })
         })
         this.props.updateUser();
