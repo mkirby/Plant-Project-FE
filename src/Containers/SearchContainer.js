@@ -1,8 +1,7 @@
 import React from 'react'
-import { Route, Switch, Redirect} from 'react-router-dom'
 import SearchForm from '../Components/SearchForm'
 import PlantCard from '../Components/PlantCard'
-import Modal from '../Components/Modal'
+import PlantShowModal from '../Components/PlantShowModal'
 
 class SearchContainer extends React.Component {
 
@@ -29,8 +28,8 @@ class SearchContainer extends React.Component {
             }
         })
         .then(resp => resp.json())
-        .then(apiResponse => {
-            this.setState({queryResults: apiResponse.api_data.data})
+        .then(fetchData => {
+            this.setState({queryResults: fetchData.api.data})
         })
     }
     
@@ -113,23 +112,13 @@ class SearchContainer extends React.Component {
                     <h1>Search</h1>
                     {this.props.user ? <SearchForm searchHandler={this.searchHandler}/> : <p>Please log in</p>}
                 </div>
-                {this.state.visibleModal ? <Modal plant={this.state.modalPlant} hideModal={this.hideModal} /> : null }
+                {this.state.visibleModal ? <PlantShowModal plant={this.state.modalPlant} hideModal={this.hideModal} /> : null }
                 
                 {this.state.stagingArray.length > 0 ? <button onClick={this.addPlantsToCollection}>ADD ALL TO COLLECTION</button> : null}
                 
-                <Switch>
-                    {/* <Route path="/search/:apiSlug" render={({match}) => {
-                            return <div className="plant-profile-div">
-                                <PlantProfile slug={match.params.apiSlug} />
-                            </div>
-                        }
-                    }/> */}
-                    <Route path="/search" render={ () => {
-                        return <div className="search-results-div">
-                            {this.renderPlantResults()}
-                        </div>
-                    }} />
-                </Switch>
+                <div className="search-results-div">
+                    {this.renderPlantResults()}
+                </div>
             </div>
         )
     }

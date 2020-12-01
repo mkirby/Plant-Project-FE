@@ -1,6 +1,6 @@
 import React from 'react'
 
-class Modal extends React.Component {
+class PlantShowModal extends React.Component {
     
     state = {
         plant: null
@@ -14,7 +14,7 @@ class Modal extends React.Component {
             }
         })
         .then(response => response.json())
-        .then(d => this.setState({plant: d.api_data.data}))
+        .then(fetchData => this.setState({plant: fetchData.api.data}))
     }
     
     render() {
@@ -74,4 +74,4 @@ class Modal extends React.Component {
     }
 }
 
-export default Modal
+export default PlantShowModal
