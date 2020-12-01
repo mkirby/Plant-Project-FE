@@ -39,7 +39,11 @@ class App extends React.Component {
       body: JSON.stringify({ user: userObj})
     })
     .then(response => response.json())
-    .then(console.log)
+    .then(data => {
+      localStorage.setItem("token", data.jwt)
+      this.setState({user: data.user}, () => console.log("LOGGED IN AS: ", this.state.user))
+      this.props.history.push("/search")
+    })
   }
   
   loginHandler = (userObj) => {

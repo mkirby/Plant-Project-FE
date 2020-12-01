@@ -14,7 +14,10 @@ function Navbar(props) {
                 {props.user ?
                     <NavLink to="/" onClick={ props.logoutHandler }>Log Out</NavLink>
                     :
+                    <>
+                    <NavLink to="/signup">Sign Up</NavLink>
                     <NavLink to="/login">Log in</NavLink>
+                    </>
                 }
             </div>
         </div>
