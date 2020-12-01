@@ -1,6 +1,5 @@
 import React from 'react'
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom'
-import PlantShowContainer from './PlantShowContainer'
 import UserPlantCard from '../Components/UserPlantCard'
 
 class CollectionContainer extends React.Component {
@@ -19,7 +18,8 @@ class CollectionContainer extends React.Component {
                     let plant = this.props.user.user_plants.filter(plant => plant.id === user_plant_id)
                     if (plant.length !== 0) {
                       return <div className="show-user-plant">
-                          <PlantShowContainer plant={plant[0]}/>
+                          {/* TODO render Modal for single */}
+                          <p>Logged In: Single PlantShowContainer Page</p>
                         </div>
                     }
                     // TODO decide what to render is user_plant odesn't exist
