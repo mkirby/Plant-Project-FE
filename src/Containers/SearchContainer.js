@@ -1,11 +1,8 @@
 import React from 'react'
-import { Route, Switch} from 'react-router-dom'
+import { Route, Switch, Redirect} from 'react-router-dom'
 import SearchForm from '../Components/SearchForm'
 import PlantCard from '../Components/PlantCard'
-import PlantProfile from '../Containers/PlantProfile'
-
 import Modal from '../Components/Modal'
-
 
 class SearchContainer extends React.Component {
 
@@ -61,13 +58,52 @@ class SearchContainer extends React.Component {
     
     addPlantsToCollection = () => {
         const plantArray = this.state.stagingArray
-        console.log(plantArray)
-        plantArray.each(plant => {
-            console.log("FEEDING INTO DB")
-            // feed plant into PlantDB
-            // feed plantID from response into UserPlant with User ID
-            
+        plantArray.forEach(plant => {
+            this.postPlant(plant)
+            .then(plantObj => {
+                this.postUserPlant(plantObj.plant.id, this.props.user.id)
+                .then(() => {})
+            })
         })
+        this.props.updateUser();
+    }
+
+    postUserPlant = (plantId, userId) => {
+        console.log("plant id:", plantId, "userId", userId)
+        const token = localStorage.getItem("token")
+        const newUserPlant = {
+            user_id: userId,
+            plant_id: plantId,
+            nickname: ""
+        }
+        return fetch(`http://localhost:3000/api/v1/user_plants`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accepts: "application/json",
+                Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify(newUserPlant)
+        })
+        .then(response => response.json())
+    }
+
+    postPlant = (plant) => {
+        const token = localStorage.getItem("token")
+        const newPlant = {
+            api_id: plant.id,
+            slug: plant.slug
+        }
+        return fetch(`http://localhost:3000/api/v1/plants`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accepts: "application/json",
+                Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify(newPlant)
+        })
+        .then(response => response.json())
     }
     
     render() {

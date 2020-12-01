@@ -69,6 +69,19 @@ class App extends React.Component {
     this.setState({user: null})
     this.props.history.push("/")
   }
+
+  updateUser = () => {
+    const token = localStorage.getItem("token")
+    fetch('http://localhost:3000/api/v1/profile', {
+      method: "GET",
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .then(response => response.json())
+    .then(data => {
+      this.setState({user: data.user}, () => console.log("user has been updated"))
+      this.props.history.push("/collection")
+    })
+  }
   
   render() {
     return (
@@ -78,8 +91,8 @@ class App extends React.Component {
             <Switch>
               <Route path ="/signup" render={ () => <Signup submitHandler={this.signupHandler} /> } />
               <Route path ="/login" render={ () => <Login submitHandler={this.loginHandler} /> } />
-              <Route path ="/search" render={ () => <SearchContainer user={this.state.user} /> } />
-              <Route path="/collection" render={ () => <CollectionContainer user={this.state.user}/>} />
+              <Route path ="/search" render={ () => <SearchContainer user={this.state.user} updateUser={this.updateUser}/> } />
+              <Route path="/collection" render={ () => <CollectionContainer user={this.state.user} updateUser={this.updateUser}/>} />
             </Switch>
           </main>
           {/* footer component here */}

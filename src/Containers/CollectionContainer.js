@@ -47,9 +47,7 @@ class CollectionContainer extends React.Component {
   }
 
   renderUserPlantCards = () => {
-    // const testPlantNicknames = ["Planty", "Sprout", "Planty Jr.", "Ms. Prickly"]
-    // return testPlantNicknames.map((nickname, index) => <UserPlantCard key={index} nickname={nickname}/>)
-    return this.props.user.user_plants.map(plant => <UserPlantCard key={plant.id} nickname={plant.nickname} plant={plant}/>)
+    return this.props.user.user_plants.map(plant => <UserPlantCard key={plant.id} plant={plant} updateUser={this.props.updateUser}/>)
   }
 
 }
