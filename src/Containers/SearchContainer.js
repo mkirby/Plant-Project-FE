@@ -34,7 +34,9 @@ class SearchContainer extends React.Component {
             }
         })
         .then(resp => resp.json())
-        .then(apiResponse => this.setState({queryResults: apiResponse.api_data.data}))
+        .then(apiResponse => {
+            this.setState({queryResults: apiResponse.api_data.data})
+        })
     }
     
     renderPlantResults = () => {

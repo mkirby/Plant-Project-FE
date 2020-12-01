@@ -13,31 +13,42 @@ class PlantProfile extends React.Component {
             }
         })
         .then(response => response.json())
-        .then(d => this.setState({plant: d.api_data.data}, () => console.log(this.state.plant)))
+        .then(d => this.setState({plant: d.api_data.data}))
     }
 
     render() {
         const plant = this.state.plant
+        console.log(plant)
         return (
             <>
                 {this.state.plant ? 
-                    <>
+                    <div id="plant-profile">
                         {plant.image_url ? <img src={plant.image_url} alt={plant.common_name} width="200" /> : null}
                         <h3>{plant.common_name}</h3>
-                        <p>Scientific Name: ({plant.scientific_name})</p>
-                        <p>Genus: {plant.main_species.genus}</p>
-                        <p>Year discovered: {plant.year}</p>
+                        <p>Scientific Name: {plant.scientific_name}</p>
+                        {plant.genus ? <p>Genus: {plant.genus.name}</p> : null }
+                        {plant.family ? <p>Family: {plant.family.name}</p> : null }
+                        {plant.year ? <p>Year discovered: {plant.year}</p> : null }
                         
-                        <h4>Common names</h4>
-                            <ul>
-                                {this.renderPlantNames()}
-                            </ul>
-                        
-                        <h4>Native to</h4>
-                            <ul>
-                                {this.renderplantNativeTo()}
-                            </ul>
-                    </>
+                        { plant.main_species ?
+                            <>
+                                <h4>Common names</h4>
+                                <ul>
+                                    {this.renderPlantNames()}
+                                </ul>
+                            </>
+                        :
+                            null }
+                        { plant.main_species ?    
+                            <>
+                                <h4>Native to</h4>
+                                <ul>
+                                    {this.renderplantNativeTo()}
+                                </ul>
+                            </>
+                        :
+                            null }
+                    </div>
                 :
                 <p>Loading...</p> }
             </>
