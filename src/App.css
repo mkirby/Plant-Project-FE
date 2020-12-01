@@ -10,6 +10,8 @@
   /* border: 2px solid red; */
 }
 
+/* ANCHOR NAVIGATION */
+
 .navbar {
   grid-area: navbar;
   display: grid;
@@ -41,10 +43,14 @@
   /* border: 2px solid orange; */
 }
 
+/* ANCHOR MAIN CONTENT */
+
 main {
   grid-area: main-content;
   /* border: 2px solid orange; */
 }
+
+/* ANCHOR FOOTER */
 
 footer {
   grid-area: footer;
@@ -52,12 +58,15 @@ footer {
   /* border: 2px solid red; */
 }
 
+/* ANCHOR SEARCH PAGE */
+
 .search-container {
   /* the entire search container return div */
 }
 
 .search-filters {
   /* search and filter controls container */
+  text-align: center;
 }
 
 .search-results-div {
@@ -79,3 +88,18 @@ footer {
   min-width: 250px;
 }
 
+/* ANCHOR COLLECTION PAGE */
+
+.collection-container {
+  /* entire collection content area */
+}
+
+.show-user-plant {
+  /* show a single user plant */
+}
+
+.collection-div {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
