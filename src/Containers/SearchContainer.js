@@ -67,7 +67,6 @@ class SearchContainer extends React.Component {
     }
 
     postUserPlant = (plantId, userId) => {
-        console.log("plant id:", plantId, "userId", userId)
         const token = localStorage.getItem("token")
         const newUserPlant = {
             user_id: userId,

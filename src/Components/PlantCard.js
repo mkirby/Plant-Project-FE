@@ -12,7 +12,8 @@ class PlantCard extends React.Component {
   }
   
   render() {
-    const plant = this.props.plant
+    const { plant } = this.props
+    console.log("plant card plant:", plant)
     return (
       <div className="plant-card">
         {plant.image_url ? <img src={plant.image_url} alt={plant.common_name} height="100" /> : null}

@@ -41,7 +41,7 @@ class App extends React.Component {
     .then(response => response.json())
     .then(data => {
       localStorage.setItem("token", data.jwt)
-      this.setState({user: data.user}, () => console.log("LOGGED IN AS: ", this.state.user))
+      this.setState({user: data.user})
       this.props.history.push("/search")
     })
   }
@@ -62,7 +62,7 @@ class App extends React.Component {
       .then(response => response.json())
       .then(data => {
         localStorage.setItem("token", data.jwt)
-        this.setState({user: data.user}, () => console.log("LOGGED IN AS: ", this.state.user))
+        this.setState({user: data.user})
         this.props.history.push("/collection")
       })
     }
@@ -82,7 +82,7 @@ class App extends React.Component {
     })
     .then(response => response.json())
     .then(data => {
-      this.setState({user: data.user}, () => console.log("user has been updated"))
+      this.setState({user: data.user})
       this.props.history.push("/collection")
     })
   }
