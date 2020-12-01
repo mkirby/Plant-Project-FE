@@ -8,21 +8,26 @@ class CollectionContainer extends React.Component {
   render() {
     return (
       <div className="collection-container">
-        <h2>Collection Container</h2>
+        <h2>Plant Collection</h2>
         {localStorage.getItem("token") ?
           <>
             {this.props.user ?
               <>
                 <Switch>
                   <Route path="/collection/:user_plant_id" render={({match}) => {
-                    // let user_plant_id = parseInt(match.params.user_plant_id)
-                    // let userPlant = TODO
-                    return <PlantShowContainer />
+                    let user_plant_id = parseInt(match.params.user_plant_id)
+                    let plant = this.props.user.user_plants.filter(plant => plant.id === user_plant_id)
+                    if (plant.length !== 0) {
+                      return <div className="show-user-plant">
+                          <PlantShowContainer plant={plant[0]}/>
+                        </div>
+                    }
+                    // TODO decide what to render is user_plant odesn't exist
+                    return <p>Plant doesn't exist</p>
                   }} />
                   <Route path="/collection" render={() => {
                     return (
-                      <div>
-                        <p>Logged In: Entire Collection Page</p>
+                      <div className="collection-div">
                         {this.renderUserPlantCards()}
                       </div>
                     )
@@ -42,10 +47,9 @@ class CollectionContainer extends React.Component {
   }
 
   renderUserPlantCards = () => {
-    // map over user plants and create cards
-    // TODO change to iteration to real data
-    const testPlantNicknames = ["Planty", "Sprout", "Planty Jr.", "Ms. Prickly"]
-    return testPlantNicknames.map((nickname, index) => <UserPlantCard key={index} nickname={nickname}/>)
+    // const testPlantNicknames = ["Planty", "Sprout", "Planty Jr.", "Ms. Prickly"]
+    // return testPlantNicknames.map((nickname, index) => <UserPlantCard key={index} nickname={nickname}/>)
+    return this.props.user.user_plants.map(plant => <UserPlantCard key={plant.id} nickname={plant.nickname} plant={plant}/>)
   }
 
 }
