@@ -8,16 +8,16 @@ class SearchContainer extends React.Component {
     state = {
         queryResults: [],
         visibleModal: false,
-        modalPlant: "",
+        modalPlantSlug: "",
         stagingArray: []
     }
     
-    renderModal = (plantSlug) => {
-        this.setState({visibleModal: true, modalPlant: plantSlug})
+    renderModal = (slug) => {
+        this.setState({visibleModal: true, modalPlantSlug: slug})
     }
     
     hideModal = () => {
-        this.setState({visibleModal: false, modalPlant: ""})
+        this.setState({visibleModal: false, modalPlantSlug: ""})
     }
 
     searchHandler = (query) => {
@@ -110,7 +110,7 @@ class SearchContainer extends React.Component {
                     <h1>Search</h1>
                     {this.props.user ? <SearchForm searchHandler={this.searchHandler}/> : <p>Please log in</p>}
                 </div>
-                {this.state.visibleModal ? <PlantShowModal plant={this.state.modalPlant} hideModal={this.hideModal} /> : null }
+                {this.state.visibleModal ? <PlantShowModal slug={this.state.modalPlantSlug} hideModal={this.hideModal} /> : null }
                 
                 {this.state.stagingArray.length > 0 ? <button onClick={this.addPlantsToCollection}>ADD ALL TO COLLECTION</button> : null}
                 

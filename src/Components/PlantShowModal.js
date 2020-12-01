@@ -8,7 +8,7 @@ class PlantShowModal extends React.Component {
     
     componentDidMount() {
         const token = localStorage.getItem("token")
-        fetch(`http://localhost:3000/api/v1/search/${this.props.plant}`, {
+        fetch(`http://localhost:3000/api/v1/search/${this.props.slug}`, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
