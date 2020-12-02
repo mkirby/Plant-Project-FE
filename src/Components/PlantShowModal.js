@@ -48,7 +48,7 @@ class PlantShowModal extends React.Component {
                         </div>
                     </div>
                 :
-                <div className="loading">Loading...</div>}
+                <div id="modal-content"> <div className="loading">Loading...</div> </div>}
             </div>
         )
     }
