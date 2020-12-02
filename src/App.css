@@ -84,9 +84,34 @@ footer {
   margin-top: 20px;
 }
 
-.add-to-collection-widget {
+.add-to-collection-div {
   text-align: center;
-  border: 2px solid red;
+  padding: 20px;
+  background-color: lightgrey;
+}
+
+.add-to-collection-images-div {
+  padding-bottom: 10px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  overflow: auto;
+}
+
+.add-to-collection-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 5px;
+}
+
+.add-to-collection-image img {
+  min-width: 100%;
+  min-height: 100%;
+  max-height: 150%;
+  max-width: 150%;
+  margin: auto;
 }
 
 .search-results-div {
