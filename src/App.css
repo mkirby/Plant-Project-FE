@@ -42,7 +42,11 @@
 .nav-menu a {
   padding: 10px;
   color: white;
-  /* border: 2px solid orange; */
+  text-decoration: none;
+}
+
+.nav-menu a:hover {
+  text-decoration: underline;
 }
 
 /* ANCHOR MAIN CONTENT */
@@ -56,10 +60,10 @@ main {
 
 footer {
   grid-area: footer;
+  padding: 0 20px;
   background-color: green;
-  /* border: 2px solid red; */
+  color: rgb(6, 74, 6);
 }
-
 
 /* ANCHOR SEARCH PAGE */
 
