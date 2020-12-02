@@ -1,6 +1,6 @@
 import React from 'react'
 
-class Login extends React.Component {
+class SearchForm extends React.Component {
     state = {
         query: ""
     }
@@ -24,4 +24,4 @@ class Login extends React.Component {
     }
 }
 
-export default Login
+export default SearchForm

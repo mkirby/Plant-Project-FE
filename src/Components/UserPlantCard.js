@@ -57,6 +57,12 @@ class UserPlantCard extends React.Component {
   changeHandler = (event) => {
     this.setState({ [event.target.name]: event.target.value })
   }
+  
+  handleKeyPress = (event) => {
+    if(event.key === 'Enter'){
+      this.renamePlant()
+    }
+  }
 
   render() {
     return (
@@ -76,21 +82,21 @@ class UserPlantCard extends React.Component {
           
             {/* NICKNAME EDITING FORM*/}
             {this.state.editing ?
-              <>
-                <input type="text" name="nickname" value={this.state.nickname} onChange={this.changeHandler} />
-                <button onClick={this.renamePlant}>save</button>
-              </>
+              <div id="nickname-form">
+                <input type="text" name="nickname" value={this.state.nickname} onChange={this.changeHandler} onKeyPress={this.handleKeyPress}/>
+              </div>
             :
               null
             }
             
-            {this.state.nickname.length > 0 ?
-                <h2 onClick={this.startEdit}>
-                  {this.state.nickname}
-                </h2>
-            : 
-              <p onClick={this.startEdit}>no nickname</p>
-            }
+            <h2 onClick={this.startEdit}>
+              {this.state.nickname.length > 0 && !this.state.editing ? this.state.nickname : null }
+            </h2>
+            
+            {this.state.nickname.length === 0 && !this.state.editing ?
+              <p onClick={this.startEdit}>(✎ click to add nickname)</p>
+            :
+              null }
           
           {this.state.plant ? <h3>{this.state.plant.common_name}</h3> : <h3>Loading...</h3>}
           {this.state.plant ? <p><strong>Scientific Name:</strong> <em>{this.state.plant.scientific_name}</em></p> : null}
