@@ -57,13 +57,17 @@ class SearchContainer extends React.Component {
     
     addPlantsToCollection = () => {
         const plantArray = this.state.stagingArray
-        plantArray.forEach(plant => {
+        plantArray.forEach((plant, index) => {
             this.postPlant(plant)
             .then(plantObj => {
                 this.postUserPlant(plantObj.plant.id, this.props.user.id)
+                .then(() => {
+                    if (index === (plantArray.length - 1)) {
+                        this.props.updateUser()
+                    }
+                })
             })
         })
-        this.props.updateUser();
     }
 
     postUserPlant = (plantId, userId) => {
@@ -104,32 +108,44 @@ class SearchContainer extends React.Component {
     }
 
     renderMiniImages = () => {
-        return 
+        return this.state.stagingArray.map(plant => {
+            return (
+                <div className="add-to-collection-image">
+                    {plant.image_url ?
+                    <img key={plant.id} src={plant.image_url} alt={plant.scientific_name} style={{"maxHeight": "100px"}} />
+                    :
+                    <img
+                        key={plant.id}
+                        src={"https://static.patchplants.com/img/placeholders/patch_placeholder_grey.png"}
+                        alt={"missing"}
+                        style={{"maxHeight": "100px"}}
+                    />}
+                </div>
+            )
+        })
     }
     
     render() {
         return(
             <div className="search-container">
-                <div className="search-filters">
-                    <h1>Find Plants</h1>
-                    {this.props.user ? <SearchForm searchHandler={this.searchHandler}/> : <p>Please log in</p>}
-                </div>
+                
                 {this.state.visibleModal ? <PlantShowModal slug={this.state.modalPlantSlug} hideModal={this.hideModal} /> : null }
-
                 {this.state.stagingArray.length > 0 ?
                     <div className="add-to-collection-div">
-                        <div className="add-to-collection-images">
-                            {/* render small images */}
-                            {this.renderMiniImages}
+                        <div className="add-to-collection-images-div">
+                            {this.renderMiniImages()}
                         </div>
                         <div className="add-to-collection-controls">
-                            <button onClick={this.addPlantsToCollection}>ADD ALL TO COLLECTION</button>
+                            <button onClick={this.addPlantsToCollection}>Add Plants to Collection</button>
                         </div>
                     </div>
                     :
                     null
                 }
-                
+                <div className="search-filters">
+                    <h1>Find Plants</h1>
+                    {this.props.user ? <SearchForm searchHandler={this.searchHandler}/> : <p>Please log in</p>}
+                </div>
                 <div className="search-results-div">
                     {this.renderPlantResults()}
                 </div>
