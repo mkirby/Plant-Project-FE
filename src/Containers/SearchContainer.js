@@ -102,17 +102,33 @@ class SearchContainer extends React.Component {
         })
         .then(response => response.json())
     }
+
+    renderMiniImages = () => {
+        return 
+    }
     
     render() {
         return(
             <div className="search-container">
                 <div className="search-filters">
-                    <h1>Search</h1>
+                    <h1>Find Plants</h1>
                     {this.props.user ? <SearchForm searchHandler={this.searchHandler}/> : <p>Please log in</p>}
                 </div>
                 {this.state.visibleModal ? <PlantShowModal slug={this.state.modalPlantSlug} hideModal={this.hideModal} /> : null }
-                
-                {this.state.stagingArray.length > 0 ? <button onClick={this.addPlantsToCollection}>ADD ALL TO COLLECTION</button> : null}
+
+                {this.state.stagingArray.length > 0 ?
+                    <div className="add-to-collection-div">
+                        <div className="add-to-collection-images">
+                            {/* render small images */}
+                            {this.renderMiniImages}
+                        </div>
+                        <div className="add-to-collection-controls">
+                            <button onClick={this.addPlantsToCollection}>ADD ALL TO COLLECTION</button>
+                        </div>
+                    </div>
+                    :
+                    null
+                }
                 
                 <div className="search-results-div">
                     {this.renderPlantResults()}
