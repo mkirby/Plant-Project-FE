@@ -1,13 +1,31 @@
 import React from 'react'
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom'
 import UserPlantCard from '../Components/UserPlantCard'
+import PlantShowModal from '../Components/PlantShowModal'
+
 
 class CollectionContainer extends React.Component {
+
+  state = {
+    visibleModal: false,
+    modalPlantSlug: ""
+  }
+
+  renderModal = (slug) => {
+    this.setState({visibleModal: true, modalPlantSlug: slug})
+  }
+  
+  hideModal = () => {
+      this.setState({visibleModal: false, modalPlantSlug: ""})
+  }
 
   render() {
     return (
       <div className="collection-container">
         <h2>Plant Collection</h2>
+        
+        {this.state.visibleModal ? <PlantShowModal slug={this.state.modalPlantSlug} hideModal={this.hideModal} /> : null }
+        
         {localStorage.getItem("token") ?
           <>
             {this.props.user ?
@@ -47,7 +65,7 @@ class CollectionContainer extends React.Component {
   }
 
   renderUserPlantCards = () => {
-    return this.props.user.user_plants.map(plant => <UserPlantCard key={plant.id} plant={plant} updateUser={this.props.updateUser}/>)
+    return this.props.user.user_plants.map(plant => <UserPlantCard key={plant.id} userPlant={plant} updateUser={this.props.updateUser} renderModal={this.renderModal}/>)
   }
 
 }
