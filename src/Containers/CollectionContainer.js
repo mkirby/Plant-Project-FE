@@ -22,7 +22,7 @@ class CollectionContainer extends React.Component {
                           <p>Logged In: Single PlantShowContainer Page</p>
                         </div>
                     }
-                    // TODO decide what to render is user_plant odesn't exist
+                    // TODO decide what to render if user_plant doesn't exist
                     return <p>Plant doesn't exist</p>
                   }} />
                   <Route path="/collection" render={() => {
