@@ -19,8 +19,8 @@ class UserPlantCard extends React.Component {
 
   removePlant = () => {
     const token = localStorage.getItem("token")
-    console.log("plant id?", this.state.plant.id)
-    fetch(`http://localhost:3000/api/v1/user_plants/${this.state.plant.id}`, {
+    console.log("plant id?", this.props.userPlant.id)
+    fetch(`http://localhost:3000/api/v1/user_plants/${this.props.userPlant.id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`
