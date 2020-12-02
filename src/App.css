@@ -101,7 +101,7 @@ footer {
   grid-area: img;
   width: 175px;
   height: 175px;
-  border-radius: 20%;
+  border-radius: 50%;
   overflow: hidden;
 }
 
@@ -160,9 +160,11 @@ footer {
   max-width: 75%; /* Could be more or less, depending on screen size */
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 0fr 0fr 1fr;
   grid-template-areas:
-    "modal-img modal-data modal-data"
-    "modal-img data-1 data-2";
+    "modal-img modal-img modal-data"
+    "modal-img modal-img data-1"
+    "modal-img modal-img data-2";
 }
 
 .modal-content-image {

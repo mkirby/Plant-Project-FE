@@ -19,7 +19,6 @@ class PlantShowModal extends React.Component {
         const plant = this.state.plant
         return(
             <div id="plant-modal" onClick={this.props.hideModal}>
-                
                 {this.state.plant ?
                     <div id="modal-content">
                         <div className="modal-content-image">
