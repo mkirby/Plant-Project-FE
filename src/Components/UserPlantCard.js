@@ -96,6 +96,7 @@ class UserPlantCard extends React.Component {
           {this.state.plant ? <p><strong>Scientific Name:</strong> <em>{this.state.plant.scientific_name}</em></p> : null}
           {this.state.plant ? <p><strong>Family:</strong> {this.state.plant.family.name}</p> : null}
           <button onClick={() => this.props.renderModal(this.props.userPlant.plant.slug)}>More Info</button><br/>
+          <button onClick={this.removePlant}> Remove from Collection</button>
         </div>
         
       </div>

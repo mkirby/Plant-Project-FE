@@ -22,7 +22,7 @@ class CollectionContainer extends React.Component {
   render() {
     return (
       <div className="collection-container">
-        <h2>Plant Collection</h2>
+        <h1>Plant Collection</h1>
         
         {this.state.visibleModal ? <PlantShowModal slug={this.state.modalPlantSlug} hideModal={this.hideModal} /> : null }
         
