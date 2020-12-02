@@ -16,7 +16,13 @@ class PlantCard extends React.Component {
     return (
       <div className="plant-card">
         <div className="plant-card-img">
-          {plant.image_url ? <img src={plant.image_url} alt={plant.common_name} /> : <img src={"https://static.patchplants.com/img/placeholders/patch_placeholder_grey.png"} alt={"image missing"} style={{"max-height": "100%"}}/>}
+          {plant.image_url ?
+          <img src={plant.image_url} alt={plant.common_name} />
+          :
+          <img
+            src={"https://static.patchplants.com/img/placeholders/patch_placeholder_grey.png"}
+            alt={"missing"}
+            style={{"maxHeight": "100%"}}/>}
         </div>
         <div className="plant-card-data">
           {plant.common_name ? <h3>{plant.common_name}</h3> : <h3>{plant.scientific_name}</h3>}
