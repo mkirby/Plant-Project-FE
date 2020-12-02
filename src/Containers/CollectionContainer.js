@@ -65,7 +65,7 @@ class CollectionContainer extends React.Component {
   }
 
   renderUserPlantCards = () => {
-    return this.props.user.user_plants.map(plant => <UserPlantCard key={plant.id} plant={plant} updateUser={this.props.updateUser} renderModal={this.renderModal}/>)
+    return this.props.user.user_plants.map(plant => <UserPlantCard key={plant.id} userPlant={plant} updateUser={this.props.updateUser} renderModal={this.renderModal}/>)
   }
 
 }

@@ -4,13 +4,13 @@ class UserPlantCard extends React.Component {
   
   state = {
     plant: null,
-    nickname: this.props.plant.nickname,
+    nickname: this.props.userPlant.nickname,
     editing: false 
   }
     
   componentDidMount() {
     const token = localStorage.getItem("token")
-    fetch(`http://localhost:3000/api/v1/search/${this.props.plant.plant.slug}`, {
+    fetch(`http://localhost:3000/api/v1/search/${this.props.userPlant.plant.slug}`, {
         headers: { Authorization: `Bearer ${token}` }
     })
     .then(response => response.json())
@@ -34,12 +34,24 @@ class UserPlantCard extends React.Component {
   }
   
   renamePlant = () => {
-    console.log(this.state.nickname)
+    const token = localStorage.getItem("token")
+    fetch(`http://localhost:3000/api/v1/user_plants/${this.props.userPlant.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({nickname: this.state.nickname})
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log("EDIT:", data)
+      this.setState({editing: false})
+    })
   }
   
-  toggleEdit = () => {
-    this.setState({editing: !this.state.editing})
-    this.renamePlant()
+  startEdit = () => {
+    this.setState({editing: true})
   }
   
   changeHandler = (event) => {
@@ -64,24 +76,26 @@ class UserPlantCard extends React.Component {
           
             {/* NICKNAME EDITING FORM*/}
             {this.state.editing ?
-              <input type="text" name="nickname" value={this.state.nickname} onChange={this.changeHandler} />
+              <>
+                <input type="text" name="nickname" value={this.state.nickname} onChange={this.changeHandler} />
+                <button onClick={this.renamePlant}>save</button>
+              </>
             :
               null
             }
             
-            {this.state.nickname.length > 0 && this.state.editing === false ?
-                <h2>
+            {this.state.nickname.length > 0 ?
+                <h2 onClick={this.startEdit}>
                   {this.state.nickname}
-                  <button onClick={this.toggleEdit}>edit</button>
                 </h2>
             : 
-              <button onClick={this.toggleEdit}>add nickname</button>
+              <p onClick={this.startEdit}>no nickname</p>
             }
           
           {this.state.plant ? <h3>{this.state.plant.common_name}</h3> : <h3>Loading...</h3>}
           {this.state.plant ? <p><strong>Scientific Name:</strong> <em>{this.state.plant.scientific_name}</em></p> : null}
           {this.state.plant ? <p><strong>Family:</strong> {this.state.plant.family.name}</p> : null}
-          <button onClick={() => this.props.renderModal(this.props.plant.plant.slug)}>More Info</button><br/>
+          <button onClick={() => this.props.renderModal(this.props.userPlant.plant.slug)}>More Info</button><br/>
         </div>
         
       </div>
