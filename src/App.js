@@ -99,9 +99,8 @@ class App extends React.Component {
               <Route path="/collection" render={ () => <CollectionContainer user={this.state.user} updateUser={this.updateUser}/>} />
             </Switch>
           </main>
-          {/* footer component here */}
           <footer>
-            <p>Footer</p>
+            <p>A Brian Feldman and Matthew Kirby App</p>
           </footer>
         </div>
     );
