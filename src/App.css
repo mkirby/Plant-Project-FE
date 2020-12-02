@@ -84,10 +84,43 @@ footer {
 .plant-card {
   background-color: rgb(255, 255, 255);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  width: 20%;
-  margin: 10px;
+  display: grid;
+  grid-template-rows: 1fr 0fr;
+  grid-template-areas:
+    "img data"
+    "check data";
+  min-width: 250px;
+  max-width: 390px;
+  min-height: 250px;
+  margin: 5px;
   padding: 20px;
   min-width: 250px;
+}
+
+.plant-card-img {
+  grid-area: img;
+  width: 175px;
+  height: 175px;
+  border-radius: 20%;
+  overflow: hidden;
+}
+
+.plant-card-img img {
+  min-width: 100%;
+  min-height: 100%;
+  max-height: 150%;
+  max-width: 150%;
+  margin: auto;
+}
+
+.plant-card-data {
+  grid-area: data;
+  min-width: 100px;
+  margin-left: 20px;
+}
+
+.plant-card-check {
+  grid-area: check;
 }
 
 /* ANCHOR COLLECTION PAGE */
@@ -121,8 +154,8 @@ footer {
 
 #modal-content {
   background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
+  margin: 5% auto; /* 5% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width: 50%; /* Could be more or less, depending on screen size */
+  max-width: 75%; /* Could be more or less, depending on screen size */
 }
