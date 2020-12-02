@@ -19,12 +19,12 @@
     "site-name nav-menu";
   margin: 0px;
   background-color: green;
-  padding: 5px;
   /* border: 2px solid darkgreen; */
 }
 
 .site-name {
   grid-area: site-name;
+  padding-left: 5%;
   /* border: 2px solid purple; */
 }
 
@@ -34,11 +34,12 @@
   flex-flow: row wrap;
   justify-content: flex-end;
   align-items: center;
+  padding-right: 5%;
   /* border: 2px solid yellow; */
 }
 
 .nav-menu a {
-  margin-right: 10px;
+  /* margin-left: 10px; */
   padding: 10px;
   /* border: 2px solid orange; */
 }

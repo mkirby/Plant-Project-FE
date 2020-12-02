@@ -5,7 +5,7 @@ function Navbar(props) {
     return(
         <div className="navbar">
             <div className="site-name">
-                <h1>Plant App</h1>
+                <h1><i className="fas fa-leaf fa-inverse"></i> Plant Collector</h1>
             </div>
             <div className="nav-menu">
                 <NavLink to="/">Home</NavLink>
