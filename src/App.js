@@ -25,7 +25,7 @@ class App extends React.Component {
         this.setState({user: data.user})
       })
     } else {
-      this.props.history.push("/login")
+      this.props.history.push("/")
     }
   }
   
