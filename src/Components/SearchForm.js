@@ -16,9 +16,9 @@ class Login extends React.Component {
     
     render() {
         return(
-            <form onSubmit={this.localSearchHandler}>
-                <input type="text" name="query" placeholder="search for a plant" value={this.state.query} onChange={this.changeHandler} /><br/>
-                <input type="submit" value="Search" />
+            <form className="search-form">
+                <input type="text" name="query" placeholder="Plant Name" value={this.state.query} onChange={this.changeHandler} />
+                <button onClick={this.localSearchHandler}>Search</button>
             </form>
         )
     }

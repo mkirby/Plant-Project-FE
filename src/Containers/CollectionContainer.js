@@ -7,7 +7,7 @@ class CollectionContainer extends React.Component {
   render() {
     return (
       <div className="collection-container">
-        <h2>Plant Collection</h2>
+        <h1>Plant Collection</h1>
         {localStorage.getItem("token") ?
           <>
             {this.props.user ?

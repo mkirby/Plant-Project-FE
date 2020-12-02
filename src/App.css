@@ -24,6 +24,7 @@
 
 .site-name {
   grid-area: site-name;
+  color: white;
   padding-left: 5%;
   /* border: 2px solid purple; */
 }
@@ -39,8 +40,8 @@
 }
 
 .nav-menu a {
-  /* margin-left: 10px; */
   padding: 10px;
+  color: white;
   /* border: 2px solid orange; */
 }
 
@@ -48,7 +49,6 @@
 
 main {
   grid-area: main-content;
-  margin: 20px;
   /* border: 2px solid orange; */
 }
 
@@ -70,6 +70,19 @@ footer {
 .search-filters {
   /* search and filter controls container */
   text-align: center;
+  padding: 20px;
+}
+.search-filters h1 {
+  margin: 0px;
+}
+
+.search-form {
+  margin-top: 20px;
+}
+
+.add-to-collection-widget {
+  text-align: center;
+  border: 2px solid red;
 }
 
 .search-results-div {
@@ -126,8 +139,9 @@ footer {
 
 /* ANCHOR COLLECTION PAGE */
 
-.collection-container {
+.collection-container h1 {
   /* entire collection content area */
+  text-align: center;
 }
 
 .show-user-plant {
