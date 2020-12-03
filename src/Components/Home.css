@@ -1,8 +1,11 @@
-body {
-    background-size: 100%;
+#landing {
+    background-size: cover;
     background-image: url('http://getwallpapers.com/wallpaper/full/0/c/2/726995-widescreen-windows-xp-desktop-backgrounds-1920x1200-for-samsung-galaxy.jpg');
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
 }
 
-#landing {
+.landing-box {
     padding: 10%;
 }

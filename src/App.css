@@ -19,14 +19,17 @@
     "site-name nav-menu";
   margin: 0px;
   background-color: green;
-  /* border: 2px solid darkgreen; */
 }
 
 .site-name {
   grid-area: site-name;
   color: white;
   padding-left: 5%;
-  /* border: 2px solid purple; */
+}
+
+.site-name a {
+  color: white;
+  text-decoration: none;
 }
 
 .nav-menu {
@@ -36,7 +39,6 @@
   justify-content: flex-end;
   align-items: center;
   padding-right: 5%;
-  /* border: 2px solid yellow; */
 }
 
 .nav-menu a {
@@ -53,7 +55,6 @@
 
 main {
   grid-area: main-content;
-  /* border: 2px solid orange; */
 }
 
 /* ANCHOR FOOTER */
@@ -66,10 +67,6 @@ footer {
 }
 
 /* ANCHOR SEARCH PAGE */
-
-.search-container {
-  /* the entire search container return div */
-}
 
 .search-filters {
   /* search and filter controls container */
@@ -87,7 +84,7 @@ footer {
 .add-to-collection-div {
   text-align: center;
   padding: 20px;
-  background-color: lightgrey;
+  background-color: lightgreen;
 }
 
 .add-to-collection-images-div {
@@ -104,6 +101,7 @@ footer {
   border-radius: 50%;
   overflow: hidden;
   margin: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .add-to-collection-image img {
@@ -117,11 +115,7 @@ footer {
 .search-results-div {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-around;
-}
-
-.plant-profile-div {
-  /* holds the plant profile component on the search page */
+  justify-content: center;
 }
 
 .plant-card {
@@ -173,14 +167,10 @@ footer {
   text-align: center;
 }
 
-.show-user-plant {
-  /* show a single user plant */
-}
-
 .collection-div {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 /* ANCHOR MODAL */
@@ -240,4 +230,9 @@ footer {
 .loading {
   text-align: center;
   margin: auto;
+}
+
+.login-form, .signup-form {
+  margin: 20px;
+  text-align: center;
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Switch, withRouter, Redirect } from 'react-router-dom'
+import { Route, Switch, withRouter, Redirect, Link } from 'react-router-dom'
 import UserPlantCard from '../Components/UserPlantCard'
 import PlantShowModal from '../Components/PlantShowModal'
 
@@ -31,22 +31,10 @@ class CollectionContainer extends React.Component {
             {this.props.user ?
               <>
                 <Switch>
-                  <Route path="/collection/:user_plant_id" render={({match}) => {
-                    let user_plant_id = parseInt(match.params.user_plant_id)
-                    let plant = this.props.user.user_plants.filter(plant => plant.id === user_plant_id)
-                    if (plant.length !== 0) {
-                      return <div className="show-user-plant">
-                          {/* TODO render Modal for single */}
-                          <p>Logged In: Single PlantShowContainer Page</p>
-                        </div>
-                    }
-                    // TODO decide what to render if user_plant doesn't exist
-                    return <p>Plant doesn't exist</p>
-                  }} />
                   <Route path="/collection" render={() => {
                     return (
                       <div className="collection-div">
-                        {this.renderUserPlantCards()}
+                        {this.props.user.user_plants.length > 0 ? this.renderUserPlantCards() : <p>No Plants Yet! <Link to="/search">Search for Plants</Link></p>}
                       </div>
                     )
                   }}/>
@@ -57,7 +45,6 @@ class CollectionContainer extends React.Component {
             }
           </>
           :
-          // no token in localStorage, then redirect to login
           <Redirect to="/login" />
         }
       </div>

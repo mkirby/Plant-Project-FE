@@ -82,7 +82,7 @@ class UserPlantCard extends React.Component {
           
             {/* NICKNAME EDITING FORM*/}
             {this.state.editing ?
-              <div id="nickname-form">
+              <div id="nickname-form" style={{paddingTop: "15px"}}>
                 <input type="text" name="nickname" value={this.state.nickname} onChange={this.changeHandler} onKeyPress={this.handleKeyPress}/>
               </div>
             :
@@ -90,19 +90,22 @@ class UserPlantCard extends React.Component {
             }
             
             <h2 onClick={this.startEdit}>
-              {this.state.nickname.length > 0 && !this.state.editing ? this.state.nickname : null }
+              {this.state.nickname.length > 0 && !this.state.editing ?
+              <>
+                {this.state.nickname} <i class="far fa-edit"></i>
+              </> : null }
             </h2>
             
             {this.state.nickname.length === 0 && !this.state.editing ?
-              <p onClick={this.startEdit}>(✎ click to add nickname)</p>
+              <p onClick={this.startEdit}>Set Nickname <i class="far fa-edit"></i></p>
             :
               null }
           
           {this.state.plant ? <h3>{this.state.plant.common_name}</h3> : <h3>Loading...</h3>}
           {this.state.plant ? <p><strong>Scientific Name:</strong> <em>{this.state.plant.scientific_name}</em></p> : null}
           {this.state.plant ? <p><strong>Family:</strong> {this.state.plant.family.name}</p> : null}
-          <button onClick={() => this.props.renderModal(this.props.userPlant.plant.slug)}>More Info</button><br/>
-          <button onClick={this.removePlant}> Remove from Collection</button>
+          <button onClick={() => this.props.renderModal(this.props.userPlant.plant.slug)}>More Info</button>
+          <button onClick={this.removePlant}>Delete</button>
         </div>
         
       </div>

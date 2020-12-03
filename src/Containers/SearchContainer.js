@@ -1,4 +1,5 @@
 import React from 'react'
+import { Redirect } from 'react-router-dom'
 import SearchForm from '../Components/SearchForm'
 import PlantCard from '../Components/PlantCard'
 import PlantShowModal from '../Components/PlantShowModal'
@@ -128,7 +129,6 @@ class SearchContainer extends React.Component {
     render() {
         return(
             <div className="search-container">
-                
                 {this.state.visibleModal ? <PlantShowModal slug={this.state.modalPlantSlug} hideModal={this.hideModal} /> : null }
                 {this.state.stagingArray.length > 0 ?
                     <div className="add-to-collection-div">
@@ -144,7 +144,7 @@ class SearchContainer extends React.Component {
                 }
                 <div className="search-filters">
                     <h1>Find Plants</h1>
-                    {this.props.user ? <SearchForm searchHandler={this.searchHandler}/> : <p>Please log in</p>}
+                    {this.props.user ? <SearchForm searchHandler={this.searchHandler}/> : <Redirect to="/login" />}
                 </div>
                 <div className="search-results-div">
                     {this.renderPlantResults()}

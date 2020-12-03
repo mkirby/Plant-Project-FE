@@ -5,10 +5,9 @@ function Navbar(props) {
     return(
         <div className="navbar">
             <div className="site-name">
-                <h1><i className="fas fa-leaf fa-inverse"></i> Plant Collector</h1>
+                <NavLink to="/"><h1><i className="fas fa-leaf fa-inverse"></i> Plant Collector</h1></NavLink>
             </div>
             <div className="nav-menu">
-                <NavLink to="/">Home</NavLink>
                 <NavLink to="/search">Search</NavLink>
                 <NavLink to="/collection">Collection</NavLink>
                 {props.user ?
