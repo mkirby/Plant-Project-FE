@@ -94,7 +94,7 @@ class App extends React.Component {
           <Navbar user={this.state.user} logoutHandler={this.logoutHandler}/>
           <main>
             <Switch>
-              <Route path="/" render={Home} />
+              <Route exact path="/" render={Home} />
               <Route path="/signup" render={ () => <Signup submitHandler={this.signupHandler} /> } />
               <Route path="/login" render={ () => <Login submitHandler={this.loginHandler} /> } />
               <Route path="/search" render={ () => <SearchContainer user={this.state.user} updateUser={this.updateUser}/> } />
