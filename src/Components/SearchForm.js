@@ -11,7 +11,9 @@ class SearchForm extends React.Component {
     
     localSearchHandler = (event) => {
         event.preventDefault()
-        this.props.searchHandler(this.state.query)
+        if (this.state.query !== "") {
+            this.props.searchHandler(this.state.query)
+        }
     }
     
     render() {

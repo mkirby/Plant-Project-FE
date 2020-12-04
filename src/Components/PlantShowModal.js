@@ -17,6 +17,7 @@ class PlantShowModal extends React.Component {
     
     render() {
         const plant = this.state.plant
+        console.log(plant)
         return(
             <div id="plant-modal" onClick={this.props.hideModal}>
                 {this.state.plant ?
@@ -38,11 +39,9 @@ class PlantShowModal extends React.Component {
                             {plant.year ? <p><strong>Discovered:</strong> {plant.year}</p> : null }
                         </div>
                         <div className="modal-footer-1">
-                            <h4>Other Common Names:</h4>
                             {this.renderPlantCommonNames()}
                         </div>
                         <div className="modal-footer-2">
-                            <h4>Native to:</h4>
                             {this.renderPlantNativeTo()}
                         </div>
                     </div>
@@ -57,9 +56,12 @@ class PlantShowModal extends React.Component {
         if (main_species && main_species.common_names && main_species.common_names.en) {
             const nameLis = main_species.common_names.en.map((name, index) => <li key={index}>{name}</li>)
             return(
-                <ul>
-                    {nameLis}
-                </ul>
+                <>
+                    <h4>Other Common Names:</h4>
+                    <ul>
+                        {nameLis}
+                    </ul>
+                </>
             )
         }
     }
@@ -69,9 +71,12 @@ class PlantShowModal extends React.Component {
         if (main_species && main_species.distribution && main_species.distribution.native) {
             const localeLis = main_species.distribution.native.map((locale, index) => <li key={index}>{locale}</li>)
             return(
-                <ul>
-                    {localeLis}
-                </ul>
+                <>
+                    <h4>Native to:</h4>
+                    <ul>
+                        {localeLis}
+                    </ul>
+                </>
             )
         }
     }

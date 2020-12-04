@@ -92,12 +92,12 @@ class UserPlantCard extends React.Component {
             <h2 onClick={this.startEdit}>
               {this.state.nickname.length > 0 && !this.state.editing ?
               <>
-                {this.state.nickname} <i class="far fa-edit"></i>
+                {this.state.nickname} <i className="far fa-edit"></i>
               </> : null }
             </h2>
             
             {this.state.nickname.length === 0 && !this.state.editing ?
-              <p onClick={this.startEdit}>Set Nickname <i class="far fa-edit"></i></p>
+              <p onClick={this.startEdit}>Set Nickname <i className="far fa-edit"></i></p>
             :
               null }
           
