@@ -23,7 +23,7 @@ class Signup extends React.Component {
                 <form>
                     <input type="text" name="name" placeholder="name" value={this.state.name} onChange={this.changeHandler} /><br/><br/>
                     <input type="text" name="username" placeholder="username" value={this.state.username} onChange={this.changeHandler} /><br/><br/>
-                    <input type="text" name="password" placeholder="password" value={this.state.password} onChange={this.changeHandler} /><br/><br/>
+                    <input type="password" name="password" placeholder="password" value={this.state.password} onChange={this.changeHandler} /><br/><br/>
                     <button onClick={this.submitHandler}>Sign Up</button>
                 </form>
             </div>
