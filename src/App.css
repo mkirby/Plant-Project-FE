@@ -15,10 +15,9 @@
 .navbar {
   grid-area: navbar;
   display: grid;
-  grid-template-areas:
-    "site-name nav-menu";
+  grid-template-areas: "site-name nav-menu";
   margin: 0px;
-  background-color: green;
+  background-color: #224229;
 }
 
 .site-name {
@@ -62,8 +61,8 @@ main {
 footer {
   grid-area: footer;
   padding: 0 20px;
-  background-color: green;
-  color: rgb(6, 74, 6);
+  background-color: #224229;
+  color: rgba(252, 249, 243, 0.72);
 }
 
 /* ANCHOR SEARCH PAGE */
@@ -72,6 +71,7 @@ footer {
   /* search and filter controls container */
   text-align: center;
   padding: 20px;
+  background: #f8f1e3;
 }
 .search-filters h1 {
   margin: 0px;
@@ -84,7 +84,7 @@ footer {
 .add-to-collection-div {
   text-align: center;
   padding: 20px;
-  background-color: lightgreen;
+  background-color: #f8f1e3;
 }
 
 .add-to-collection-images-div {
@@ -105,11 +105,13 @@ footer {
 }
 
 .add-to-collection-image img {
+  object-fit: cover;
   min-width: 100%;
   min-height: 100%;
-  max-height: 150%;
-  max-width: 150%;
-  margin: auto;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .search-results-div {
@@ -143,11 +145,13 @@ footer {
 }
 
 .plant-card-img img {
+  object-fit: cover;
   min-width: 100%;
   min-height: 100%;
-  max-height: 150%;
-  max-width: 150%;
-  margin: auto;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .plant-card-data {
@@ -183,7 +187,7 @@ footer {
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 #modal-content {
@@ -215,7 +219,8 @@ footer {
   padding-left: 20px;
   grid-area: modal-data;
 }
-.modal-footer-1, .modal-footer-2 {
+.modal-footer-1,
+.modal-footer-2 {
   padding-left: 20px;
   padding-right: 20px;
 }
@@ -232,7 +237,8 @@ footer {
   margin: auto;
 }
 
-.login-form, .signup-form {
+.login-form,
+.signup-form {
   margin: 20px;
   text-align: center;
 }

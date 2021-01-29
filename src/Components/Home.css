@@ -1,11 +1,17 @@
 #landing {
-    background-size: cover;
-    background-image: url('http://getwallpapers.com/wallpaper/full/0/c/2/726995-widescreen-windows-xp-desktop-backgrounds-1920x1200-for-samsung-galaxy.jpg');
-    overflow: hidden;
-    height: 100%;
-    width: 100%;
+  background-size: cover;
+  background-image: url("https://media.architecturaldigest.com/photos/5dcde0245ff5e60008e76f52/master/w_1600%2Cc_limit/Osofsky_Oct19-571.jpg");
+  background-position: left bottom;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
 }
 
 .landing-box {
-    padding: 10%;
+  padding: 0 20px;
+  color: black;
+  font-size: x-large;
+  margin: 10%;
+  background-color: rgba(248, 241, 227, 0.7);
+  display: inline-block;
 }
